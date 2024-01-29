@@ -5,28 +5,33 @@
     </h3>
     <form id="form" @submit.prevent="onSubmit">
       <div class="flex flex-col items-start gap-2">
-        <label for="text">Text</label>
+        <label for="text" class="text-slate-500">Title</label>
         <input
           type="text"
           id="text"
           placeholder="Enter text..."
           v-model="text"
-          class="w-full p-2 rounded-md"
+          class="w-full p-3 rounded-md shadow-md"
         />
       </div>
-      <div class="flex flex-col items-start gap-2">
-        <label for="amount"
+      <div class="flex flex-col items-start gap-2 mt-2">
+        <label for="amount" class="text-slate-500"
           >Amount <br />
           (negative - expense, positive - income)</label
         >
         <input
-          type="text"
+          type="number"
           id="amount"
           placeholder="Enter amount..."
           v-model="amount"
+          class="w-full p-3 rounded-md shadow-md"
         />
       </div>
-      <button class="btn">Add transaction</button>
+      <button
+        class="w-full mt-3 bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-md shadow-md"
+      >
+        Add transaction
+      </button>
     </form>
   </div>
 </template>
@@ -37,8 +42,6 @@ import { ref } from "vue";
 
 const text = ref("");
 const amount = ref("");
-
-// Get toast interface
 const toast = useToast();
 
 const emit = defineEmits(["transactionSubmitted"]);
